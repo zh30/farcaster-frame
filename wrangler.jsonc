@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "react-router-app",
   "compatibility_date": "2025-02-24",
+  "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
   "assets": {},
   "vars": {

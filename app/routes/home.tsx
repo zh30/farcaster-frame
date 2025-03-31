@@ -1,7 +1,9 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import { useCallback, useEffect } from "react";
+import { sdk } from "@farcaster/frame-sdk";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "New React Router App" },
     { name: "description", content: "Welcome to React Router!" },
@@ -13,5 +15,12 @@ export function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <Welcome message={loaderData.message} />;
+  const handleReady = useCallback(async () => {
+    await sdk.actions.ready();
+  }, []);
+  useEffect(() => {
+    handleReady();
+  }, [handleReady]);
+
+  return <Welcome />;
 }

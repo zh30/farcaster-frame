@@ -1,14 +1,15 @@
 import { createConfig, http, WagmiProvider } from 'wagmi';
-import { base } from 'wagmi/chains';
+import { base, mainnet } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { frameConnector } from '~/lib/connector';
+import { farcasterFrame as miniAppConnector } from '@farcaster/frame-wagmi-connector'
 
-export const config = createConfig({
-  chains: [base],
+export const config: ReturnType<typeof createConfig> = createConfig({
+  chains: [base, mainnet],
   transports: {
     [base.id]: http(),
+    [mainnet.id]: http(),
   },
-  connectors: [frameConnector()],
+  connectors: [miniAppConnector()],
 });
 
 const queryClient = new QueryClient();
