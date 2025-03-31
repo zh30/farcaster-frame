@@ -4,8 +4,5 @@
   "compatibility_date": "2025-02-24",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
-  "assets": {},
-  "vars": {
-    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
-  }
+  "assets": {}
 }
